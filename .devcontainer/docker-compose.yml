@@ -10,6 +10,7 @@ services:
     environment:
       - POSTGRES_DB=n8n
       - POSTGRES_PASSWORD=password
+      - NODE_OPTIONS=--max-old-space-size=2048
 
   n8n:
     build:
