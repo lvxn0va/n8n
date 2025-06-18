@@ -22,3 +22,8 @@ services:
       DB_POSTGRESDB_HOST: postgres
       DB_TYPE: postgresdb
       DB_POSTGRESDB_PASSWORD: password
+labels:
+      - traefik.http.middlewares.n8n-gzip.compress=true
+      - traefik.http.middlewares.n8n-gzip.compress.excludedcontenttypes=text/event-stream
+      - traefik.http.routers.n8n-https.rule=Host(`${N8N_HOST}`)
+      - traefik.http.routers.n8n-https.middlewares=n8n-gzip@docker
